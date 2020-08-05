@@ -21,20 +21,20 @@ https://docs.google.com/presentation/d/1udC95saSGZoJHc22LaUlHk-bHEa9b8tdZ5_o4kdb
 
 
 ### Folder Structure
- - All the experiments use a common data loader that can be found at
+ - All the experiments use a common data loader that can be found at \
 `data_loader/data_handler_multi_identity_3view.py`
  
- - All the code can be found in the following directory
+ - All the code can be found in the following directory \
 `ls multi_identity_3view/`
 
- - The associated config files are
+ - The associated config files are \
 `ls configs/multi_identity*.json`
 
- - Scripts to run the experiments are
+ - Scripts to run the experiments are \
 `ls scripts/run_multi_identity_*.py`
 
- - Result output directories can be found at
-`ls /mnt/home/varunj/outs*`
+ - Result output directories can be found at \
+`ls /mnt/home/varunj/outs*` \
 each folder has `log`, `model`, `video` folders that contain the train/inference Tensorboard stats, saved models, and, train/inference videos respectively. 
 
 
@@ -55,41 +55,41 @@ python setup.py build_ext --inplace
 ## How to Run
 
 ### Baselines
-- Baseline 0
+- Baseline 0 \
 `python scripts/run_multi_identity_3view_baseline0.py configs/multi_identity_baseline0_*.json --no_save`
 
-- Baseline 4
+- Baseline 4 \
 `python scripts/run_multi_identity_3view_baseline4.py configs/multi_identity_baseline4.json --no_save`
 
 - Baseline 1 and 3 - Training \
-`python scripts/run_multi_identity_3view.py configs/multi_identity_baseline1_*.json --train`
+`python scripts/run_multi_identity_3view.py configs/multi_identity_baseline1_*.json --train` \
 `python scripts/run_multi_identity_3view.py configs/multi_identity_baseline3_*.json --train`
 
-- Baseline 1 and 3 - Inference
-`python scripts/run_multi_identity_3view.py configs/multi_identity_baseline1_*.json --no_save`
+- Baseline 1 and 3 - Inference \
+`python scripts/run_multi_identity_3view.py configs/multi_identity_baseline1_*.json --no_save` \
 `python scripts/run_multi_identity_3view.py configs/multi_identity_baseline3_*.json --no_save`
 
 
 ### Metric Learning
-- Train a model
+- Train a model \
 `python scripts/run_multi_identity_3view_metric_learn.py configs/multi_identity_metric.json --train`
 
-- Generate visualizations of outputs of the models
+- Generate visualizations of outputs of the models \
 `python scripts/run_multi_identity_3view_metric_learn.py configs/multi_identity_metric.json --no_save` 
 
-- Inference
+- Inference \
 `python scripts/run_multi_identity_3view_metric_run.py configs/multi_identity_metric.json --no_save` 
 
 
 ### Mimicking 11-view Rosetta Landscape
-- Generate PCA results
+- Generate PCA results \
 `python scripts/run_multi_identity_3view_mimic11v_run.py configs/multi_identity_mimic11v.json --train`
 
-- Train a model
+- Train a model \
 `python scripts/run_multi_identity_3view_mimic11v_learn.py configs/multi_identity_mimic11v.json --train`
 
-- Generate visualizations of outputs of the models
+- Generate visualizations of outputs of the models \
 `python scripts/run_multi_identity_3view_mimic11v_learn.py configs/multi_identity_mimic11v.json --no_save` 
 
-- Inference
+- Inference \
 `python scripts/run_multi_identity_3view_mimic11v_run.py configs/multi_identity_mimic11v.json --no_save` 
