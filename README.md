@@ -18,13 +18,17 @@ The methods explored were mostly centered around metric learning and mimicking t
 https://docs.google.com/document/d/1k1-ejVlVOvDYlC7vfH3ovuQXMBfNhU4CxifxLu4Q5T4/
 - The presentation slides explaining the results can be found at
 https://docs.google.com/presentation/d/1udC95saSGZoJHc22LaUlHk-bHEa9b8tdZ5_o4kdbwzI/edit#slide=id.g8586b6d298_0_3/
+- Changes done to the code are between comment lines `# --- modified by varunj ---`
 
 
 ### Folder Structure
  - All the experiments use a common data loader that can be found at \
 `data_loader/data_handler_multi_identity_3view.py`
  
- - All the code can be found in the following directory \
+  - All the model definitions can be found at \
+`utils/set_layers_multi_identity_3view.py`
+
+ - All the code can be found in the following directory. Each experiment has a separate folder `baselines`, `metric`, and, `mimic11v` containing its relevant `operation_*.py` and `model_*.py` file. \
 `ls multi_identity_3view/`
 
  - The associated config files are \
@@ -93,3 +97,27 @@ python setup.py build_ext --inplace
 
 - Inference \
 `python scripts/run_multi_identity_3view_mimic11v_run.py configs/multi_identity_mimic11v.json --no_save` 
+
+
+### Result Visualization
+-  The inference routine of each experiment generates and stores videos and Tensorboard files in the relevant \
+`/mnt/home/varunj/outs*` \
+folder. The video file name contains the itr# of the model it has been generated from.
+
+-  In addition, inference also stores a CSV file \
+`/mnt/home/varunj/outs*/<exp name>/log/.../loss_total_*_train.txt` \
+which is consistent for all experiments and is used to generate graphs. It contains the following stats:
+```
+1. frame #
+2. identity id
+3. capture name
+4. loss_total: weighted combination of losses
+5. loss_geo_euc: euc distance for geometryaveraged across vertices
+6. loss_tex_int: |intensity| differnce in texture averaged across h,w,c
+7. loss_geo: MSE for geometry
+8. loss_tex: MSE for texture
+``` 
+
+-  To generate CDF and PDF graphs, run \
+`python multi_identity_3view/vis_loss_pdf_cdf.py` \
+The experiment colors and labels are defined in the global variable `EXP`.
